@@ -1,0 +1,14 @@
+#card {
+    width: 10em;
+    height: 20em;
+    background-color: black;
+}
+
+body {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    grid-template-rows: repeat(2, 20em);
+    grid-template-columns: repeat(7, 10em);
+}
