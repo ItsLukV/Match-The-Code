@@ -1,14 +1,38 @@
-#card {
-    width: 10em;
-    height: 20em;
-    background-color: black;
+:root {
+	--card-width: 10em;
+	--card-height: 20em;
+}
+
+.aktive-card {
+	border-color: green;
+	border-width: thick;
+}
+
+.flipped {
+	background-image: url("/img.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.card {
+	width: var(--card-width);
+	height: var(--card-height);
+	color: black;
+	background-color: white;
 }
 
 body {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
-    grid-template-rows: repeat(2, 20em);
-    grid-template-columns: repeat(7, 10em);
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	gap: 0.125em;
+	grid-template-rows: repeat(2, var(--card-height));
+	grid-template-columns: repeat(7, var(--card-width));
+}
+
+img {
+	width: 200px;
+	height: 300px;
+	object-fit: contain;
 }
