@@ -57,6 +57,8 @@ let codes = [
 		type: "hehe6",
 	},
 ];
+let aktive = [];
+
 codes = shuffleArray(codes);
 
 class Card {
@@ -65,10 +67,6 @@ class Card {
 	constructor(html, code) {
 		this.html = html;
 		this.code = code;
-	}
-
-	compare(code) {
-		return this.code.type === code.type;
 	}
 
 	getHtml() {
@@ -86,11 +84,35 @@ for (let i = 0; i < 14; i++) {
 // for (let i = 0; i < cards.length; i++) {
 // 	cards[i].getHtml().innerHTML = cards[i].code.text;
 // }
-
+let locked = false;
 function clicked(number) {
+	if (locked) return;
+	if (aktive.length == 1) {
+		if (aktive[0] == number) return;
+	}
 	let card = cards[parseInt(number)];
-	card.getHtml().className = "card aktive-card ";
+	aktive.push(parseInt(number));
+	card.getHtml().className = "card aktive-card";
 	card.getHtml().innerHTML = card.code.text;
+	if (aktive.length == 2) {
+		let same = compare(cards[aktive[0]], cards[aktive[1]]);
+		console.log(aktive, same);
+		if (same) aktive = [];
+	}
+	if (aktive.length >= 2) {
+		locked = true;
+		setTimeout(function () {
+			aktive.forEach((element) => {
+				cards[element].getHtml().className = "card flipped";
+				cards[element].getHtml().innerHTML = "";
+				locked = false;
+			});
+			aktive = [];
+		}, 2000);
+	}
+}
+function compare(card1, card2) {
+	return card1.getCode().type === card2.getCode().type;
 }
 // Souce: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffleArray(array) {
