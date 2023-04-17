@@ -1,5 +1,5 @@
 :root {
-	--card-width: 10em;
+	--card-width: 13em;
 	--card-height: 20em;
 }
 
@@ -20,6 +20,7 @@
 	height: var(--card-height);
 	color: black;
 	background-color: white;
+	/* text-align: left; */
 }
 
 body {

@@ -1,60 +1,63 @@
+let tab = " | ";
 let cards = [];
 let codes = [
 	{
-		text: 'console.log("1")',
-		type: "hehe",
+		text: "Variabler",
+		type: "variabler",
 	},
 	{
-		text: 'console.log("2")',
-		type: "hehe",
+		text: "x = 10",
+		type: "variabler",
 	},
 	{
-		text: 'console.log("3")',
-		type: "hehe1",
+		text: "Funktioner",
+		type: "funktion",
 	},
 	{
-		text: 'console.log("4")',
-		type: "hehe1",
+		text: `def foo():<br>${tab}return "Hej"`,
+		type: "funktion",
 	},
 	{
-		text: 'console.log("5")',
-		type: "hehe2",
+		text: "Betinget Udførsel",
+		type: "betingetUdførsel'",
 	},
 	{
-		text: 'console.log("6")',
-		type: "hehe2",
+		text: `x = 10<br> if x == 10:<br> ${tab}print("hej")`,
+		type: "betingetUdførsel'",
 	},
 	{
-		text: 'console.log("7")',
-		type: "hehe3",
+		text: "Operatører",
+		type: "operatør",
 	},
 	{
-		text: 'console.log("8")',
-		type: "hehe3",
+		text: "10 < 5",
+		type: "operatør",
 	},
 	{
-		text: 'console.log("9")',
-		type: "hehe4",
+		text: "Løkker",
+		type: "løkker",
 	},
 	{
-		text: 'console.log("10")',
-		type: "hehe4",
+		text: `for i in range(10):<br>${tab}print(i)`,
+		type: "løkker",
 	},
 	{
-		text: 'console.log("11")',
-		type: "hehe5",
+		text: "Klasser",
+		type: "klasser",
 	},
 	{
-		text: 'console.log("12")',
-		type: "hehe5",
+		text: `class boo:<br>${tab}def __init__(self, name)<br>${
+			2 * tab
+		}self.name = name`,
+		type: "klasser",
 	},
 	{
-		text: 'console.log("13")',
-		type: "hehe6",
+		text: "Lister",
+		type: "list",
 	},
 	{
-		text: 'console.log("14")',
-		type: "hehe6",
+		text: "z = [10,11,12]",
+		type: "list",
 	},
 ];
 let aktive = [];
