@@ -9,13 +9,19 @@
 	<body>
 		<div class="card">
 			<div class="child-card">
-				<h1>Godt gjordt du Vandt!!!!</h1>
+				<h1>Du vandt!</h1>
 				<h2 id="show-clicks"></h2>
 				<button onclick="window.location.href = 'index.html'">
-					Prøve Igen
+					Prøve igen?
 				</button>
 			</div>
 		</div>
+		<script>
+			let text = document.getElementById("show-clicks");
+			text.innerHTML = `Det tog dig, ${localStorage.getItem(
+				"clicks"
+			)} antal clicks!`;
+		</script>
 		<style>
 			body {
 				display: flex;
@@ -45,8 +51,8 @@
 
 			/* Button CSS */
 			/*
-			               source: https://getcssscan.com/css-buttons-examples
-			           */
+			source: https://getcssscan.com/css-buttons-examples
+			*/
 			button {
 				background-color: #ffffff;
 				border: 1px solid #222222;
@@ -99,11 +105,5 @@
 				opacity: 1;
 			}
 		</style>
-		<script>
-			let text = document.getElementById("show-clicks");
-			text.innerHTML = `Du gjorde det på ${localStorage.getItem(
-				"clicks"
-			)} clicks`;
-		</script>
 	</body>
 </html>
