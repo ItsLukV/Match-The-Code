@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Victory</title>
+	</head>
+	<body>
+		<div class="card">
+			<div class="child-card">
+				<h1>Godt gjordt du Vandt!!!!</h1>
+				<h2 id="show-clicks"></h2>
+				<button onclick="window.location.href = 'index.html'">
+					Prøve Igen
+				</button>
+			</div>
+		</div>
+		<style>
+			body {
+				display: flex;
+				height: 100%;
+				margin: auto;
+				align-items: center;
+				justify-content: center;
+				background-color: #46484f;
+			}
+
+			.child-card {
+				display: inline-block;
+				text-align: center;
+			}
+
+			.card {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				padding: 1em;
+				border-radius: 10px;
+				background-color: white;
+				height: fit-content;
+				width: fit-content;
+			}
+
+			/* Button CSS */
+			/*
+			               source: https://getcssscan.com/css-buttons-examples
+			           */
+			button {
+				background-color: #ffffff;
+				border: 1px solid #222222;
+				border-radius: 8px;
+				box-sizing: border-box;
+				color: #222222;
+				cursor: pointer;
+				display: inline-block;
+				font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+					"Helvetica Neue", sans-serif;
+				font-size: 16px;
+				font-weight: 600;
+				line-height: 20px;
+				margin: 0;
+				outline: none;
+				padding: 13px 23px;
+				position: relative;
+				text-align: center;
+				text-decoration: none;
+				touch-action: manipulation;
+				transition: box-shadow 0.2s, -ms-transform 0.1s,
+					-webkit-transform 0.1s, transform 0.1s;
+				user-select: none;
+				-webkit-user-select: none;
+				width: auto;
+			}
+
+			button:focus-visible {
+				box-shadow: #222222 0 0 0 2px,
+					rgba(255, 255, 255, 0.8) 0 0 0 4px;
+				transition: box-shadow 0.2s;
+			}
+
+			button:active {
+				background-color: #f7f7f7;
+				border-color: #000000;
+				transform: scale(0.96);
+			}
+
+			button:hover {
+				background-color: #f7f7f7;
+				border-color: #000000;
+				transform: scale(0.96);
+			}
+
+			button:disabled {
+				border-color: #dddddd;
+				color: #dddddd;
+				cursor: not-allowed;
+				opacity: 1;
+			}
+		</style>
+		<script>
+			let text = document.getElementById("show-clicks");
+			text.innerHTML = `Du gjorde det på ${localStorage.getItem(
+				"clicks"
+			)} clicks`;
+		</script>
+	</body>
+</html>

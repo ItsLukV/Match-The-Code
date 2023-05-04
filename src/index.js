@@ -1,4 +1,4 @@
-let tab = " | ";
+let tab = "&emsp;";
 let cards = [];
 let codes = [
 	{
@@ -14,7 +14,7 @@ let codes = [
 		type: "funktion",
 	},
 	{
-		text: `def foo():<br>${tab}return "Hej"`,
+		text: `function foo(){<br>${tab}return "Hej<br>}"`,
 		type: "funktion",
 	},
 	{
@@ -22,7 +22,7 @@ let codes = [
 		type: "betingetUdførsel'",
 	},
 	{
-		text: `x = 10<br> if x == 10:<br> ${tab}print("hej")`,
+		text: `x = 10<br> if (x == 10){<br> ${tab}console.log("hej")<br>}`,
 		type: "betingetUdførsel'",
 	},
 	{
@@ -38,7 +38,7 @@ let codes = [
 		type: "løkker",
 	},
 	{
-		text: `for i in range(10):<br>${tab}print(i)`,
+		text: `for(let i = 0; i < 10; i++){<br>${tab}print(i)<br>}`,
 		type: "løkker",
 	},
 	{
@@ -46,9 +46,11 @@ let codes = [
 		type: "klasser",
 	},
 	{
-		text: `class boo:<br>${tab}def __init__(self, name)<br>${
-			2 * tab
-		}self.name = name`,
+		text: `class boo{<br>${tab} constructor(name){<br>${
+			tab + tab
+		}this.name = name<br>
+		${tab}}<br>
+		}`,
 		type: "klasser",
 	},
 	{
@@ -70,6 +72,7 @@ class Card {
 	constructor(html, code) {
 		this.html = html;
 		this.code = code;
+		this.done = false;
 	}
 
 	getHtml() {
@@ -84,22 +87,27 @@ for (let i = 0; i < 14; i++) {
 	cards[i] = new Card(document.getElementById(`${i}`), codes[i]);
 }
 
-// for (let i = 0; i < cards.length; i++) {
-// 	cards[i].getHtml().innerHTML = cards[i].code.text;
-// }
+let clicks = 0;
 let locked = false;
 function clicked(number) {
+	if (cards[parseInt(number)].done) return;
 	if (locked) return;
+	clicks++;
 	if (aktive.length == 1) {
 		if (aktive[0] == number) return;
 	}
 	let card = cards[parseInt(number)];
 	aktive.push(parseInt(number));
 	card.getHtml().className = "card aktive-card";
-	card.getHtml().innerHTML = card.code.text;
+	card.getHtml().childNodes[1].innerHTML = card.code.text;
 	if (aktive.length == 2) {
 		let same = compare(cards[aktive[0]], cards[aktive[1]]);
 		console.log(aktive, same);
+		if (same) {
+			cards[aktive[0]].done = true;
+			cards[aktive[1]].done = true;
+		}
+
 		if (same) aktive = [];
 	}
 	if (aktive.length >= 2) {
@@ -107,13 +115,22 @@ function clicked(number) {
 		setTimeout(function () {
 			aktive.forEach((element) => {
 				cards[element].getHtml().className = "card flipped";
-				cards[element].getHtml().innerHTML = "";
+				cards[element].getHtml().childNodes[1].innerHTML = "";
 				locked = false;
 			});
 			aktive = [];
 		}, 2000);
 	}
+	if (cards.map((obj) => obj.done).every((val) => val === true)) {
+		switchPage();
+	}
 }
+
+function switchPage() {
+	localStorage.setItem("clicks", clicks);
+	window.location.href = "win.html";
+}
+
 function compare(card1, card2) {
 	return card1.getCode().type === card2.getCode().type;
 }
