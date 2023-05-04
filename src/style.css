@@ -4,7 +4,7 @@
 }
 
 .aktive-card {
-	background-image: url("/fliped.png");
+	background-image: url("/img/fliped.png");
 	background-size: contain;
 	border-color: green;
 	border-width: thick;
@@ -12,7 +12,7 @@
 }
 
 .flipped {
-	background-image: url("/front.png");
+	background-image: url("/img/front.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
