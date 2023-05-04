@@ -4,12 +4,15 @@
 }
 
 .aktive-card {
+	background-image: url("/fliped.png");
+	background-size: contain;
 	border-color: green;
 	border-width: thick;
+	font-weight: bold;
 }
 
 .flipped {
-	background-image: url("/img.png");
+	background-image: url("/front.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -24,7 +27,12 @@
 }
 
 .card:focus-visible {
-	scale: 1.1;
+	scale: 1.2;
+	border: #ff7700;
+}
+
+.card:hover {
+	scale: 1.2;
 }
 
 body {
@@ -41,6 +49,17 @@ img {
 	width: 200px;
 	height: 300px;
 	object-fit: contain;
+}
+
+button {
+	background-color: black;
+	background-repeat:no-repeat;
+	outline:none;
+	border: none;
+}
+
+span { padding: 10px;
+	color: #ff7700;
 }
 
 button span {
